@@ -94,8 +94,39 @@ function zeroPad(number, width) {
   return string;
 }
 function printFarmInventory(cows, chickens, pigs) {
-    console.log(zeroPad(cows, 3) + " Cows");
-    console.log(zeroPad(chickens, 3) + " Chickens");
-    console.log(zeroPad(pigs, 3) + " Pigs");
+  console.log(zeroPad(cows, 3) + " Cows");
+  console.log(zeroPad(chickens, 3) + " Chickens");
+  console.log(zeroPad(pigs, 3) + " Pigs");
 }
-printFarmInventory(7, 16, 3);
+//printFarmInventory(7, 16, 3);
+
+// Arguments object
+function noArguments() {}
+noArguments(1, 2, 3); // This is okay
+function threeArguments(a, b, c) {}
+threeArguments(); // And so is this;
+
+function argumentsCounter() {
+  console.log("You gave me", arguments.length, "arguments.");
+}
+// argumentsCounter("Straw man", "Tautology", "Ad hominem");
+// -> you gave me 3 arguments.
+
+let journal = [];
+function addEntry(squirrel) {
+  var entry = {events: [], squirrel: squirrel};
+  for (var i = 1; i < arguments.length; i++) {
+    entry.events.push(arguments[i]);
+  }
+  journal.push(entry);
+}
+addEntry(true, "work")
+
+// Math object
+function randomPointOnCircle(radius) {
+  var angle = Math.random() * 2 * Math.PI;
+  return {x: radius * Math.cos(angle),
+          y: radius * Math.sin(angle)};
+}
+console.log(randomPointOnCircle(2));
+// -> {x: 0.3667, y: 1.966}
